@@ -1,0 +1,62 @@
+.profile {
+  width: 300px;
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 20px;
+  background-color: #ebebeb;
+  box-shadow: 3px 3px 6px -1px rgba(0,0,0,0.4);
+              -webkit-box-shadow: 3px 3px 6px -1px rgba(0,0,0,0.4);
+              -moz-box-shadow: 3px 3px 6px -1px rgba(0,0,0,0.4);
+}
+
+.avatar {
+  position: relative;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.new {
+  position: absolute;
+  right: 0.5rem;
+  top: 1rem;
+  background-color: aquamarine;
+  padding:0.15rem 0.5rem;
+  font-size: .8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.photo {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 100%;
+}
+
+.counter-app {
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  padding: 2rem;
+  margin: 0 auto;
+}
+
+.counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.counter .num {
+  font-size: 7rem;
+  font-weight: 700;
+}
+.counter button {
+  padding: 0 1.5rem;
+  font-size: 3rem;
+  border: 1px solid #ebebeb;
+  border-radius: 10px;
+}

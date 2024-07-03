@@ -1,9 +1,17 @@
 import './App.css';
+import Avatar from './components/Avatar';
 import Profile from './components/Profile';
 
 function AppProfile() {
+
+  const handleClick = (e) => {
+    console.log(e);
+  };
+  
   return (
     <>      
+      <button onClick={handleClick}>클릭</button>
+      <Avatar image="https://media.istockphoto.com/id/1476170969/ko/%EC%82%AC%EC%A7%84/%EC%A7%81%EC%97%85-%EC%A4%80%EB%B9%84%EA%B0%80-%EB%90%9C-%EC%B2%AD%EB%85%84%EC%9D%98-%EC%B4%88%EC%83%81%ED%99%94-%EC%82%AC%EC%97%85-%EA%B0%9C%EB%85%90.jpg?s=1024x1024&w=is&k=20&c=F7D9FxoimCwNaczs9MtXhGoNu_LW_o0ORY3vIhVie-U=" isNew="true" />
       <Profile
         isNew="true"
         name="James Kim" 
