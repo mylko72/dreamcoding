@@ -1,45 +1,41 @@
-import React, { useReducer } from 'react';
-import personReducer from './reducer/personReducer';
+import React, { useState } from 'react';
 
 export default function AppMentor() {
-  const [person, dispatch] = useReducer(personReducer, initialPerson);
+  const [person, setPerson] = useState(initialPerson);
 
   const handleUpdate = () => {
     const prev = prompt(`누구의 이름을 바꾸고 싶은가요?`);
     const current = prompt(`이름을 무엇으로 바꾸고 싶은가요?`);
 
-    dispatch(person, {prev, current});
-    // setPerson((person) => ({
-    //   ...person,
-    //   mentors: person.mentors.map(mentor => {
-    //     if(mentor.name === prev){
-    //       return {...mentor, name: current}
-    //     }
+    setPerson((person) => ({
+      ...person,
+      mentors: person.mentors.map(mentor => {
+        if(mentor.name === prev){
+          return {...mentor, name: current}
+        }
 
-    //     return mentor
-    //   })
-    // }));
+        return mentor
+      })
+    }));
   }
   const handleAdd = (direction = 'backward') => {
     const name = prompt('추가 할 이름을 입력하세요.');
     const title = prompt('추가 할 타이틀을 입력하세요.');
 
-    dispatch(person, {name, title, direction});    
+    setPerson((person) => ({
+      ...person,
+      mentors: direction === 'forward' ? [{name, title}, ...person.mentors,] : [ ...person.mentors, {name, title} ]
+    }));
 
-    // setPerson((person) => ({
-    //   ...person,
-    //   mentors: direction === 'forward' ? [{name, title}, ...person.mentors,] : [ ...person.mentors, {name, title} ]
-    // }));
+    console.log('person', person);
   }
   const handleDelete = () => {
     const name = prompt('삭제 할 이름을 입력하세요');
 
-    dispatch(person, {name});    
-
-    // setPerson((person) => ({
-    //   ...person,
-    //   mentors: person.mentors.filter(mentor => mentor.name !== name)
-    // }))
+    setPerson((person) => ({
+      ...person,
+      mentors: person.mentors.filter(mentor => mentor.name !== name)
+    }))
   }
 
   return (
