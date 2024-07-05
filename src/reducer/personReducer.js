@@ -1,8 +1,8 @@
-export default function personReducer({state, action}){
-  switch(action){
-    case 'update':
-      const { prev, current } = action;
-      return (state) => ({
+export default function personReducer(state, action){
+  switch(action.type){
+    case 'updated': {
+      const {prev, current } = action;
+      return {
         ...state,
         mentors: state.mentors.map(mentor => {
           if(mentor.name === prev){
@@ -11,19 +11,23 @@ export default function personReducer({state, action}){
   
           return mentor
         })
-      });  
-    case 'add':
+      }
+    }
+    case 'added': {
       const { name, title, direction } = action;
-      return (state) => ({
+      return {
         ...state,
         mentors: direction === 'forward' ? [{name, title}, ...state.mentors,] : [ ...state.mentors, {name, title} ]
-      })
-    case 'delete':
-      return (state) => ({
+      }
+    }
+    case 'deleted': {
+      return {
         ...state,
         mentors: state.mentors.filter(mentor => mentor.name !== action.name)
-      })
-    default:
-      return;
+      }
+    }
+    default: {
+      throw Error(`알 수 없는 타입입니다 ${action.type}`)
+    }
   }
 }
